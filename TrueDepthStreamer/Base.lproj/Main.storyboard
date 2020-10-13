@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14253.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14241.3"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Camera View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="CameraViewController" customModule="TrueDepthStreamer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Eqv-7y-uCz" userLabel="View">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ajY-TT-566" userLabel="2D View" customClass="PreviewMetalView" customModule="TrueDepthStreamer" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smooth Depth" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCU-4v-Pkw" userLabel="Smooth Depth Label">
+                                        <rect key="frame" x="65" y="23.666666666666671" width="126.33333333333331" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="x5F-tE-pbz">
+                                        <rect key="frame" x="-2" y="700" width="379" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <action selector="changeMixFactor:" destination="BYZ-38-t0r" eventType="valueChanged" id="QU7-1h-yAf"/>
+                                        </connections>
+                                    </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AWT-2N-ltu" userLabel="Touch Depth">
+                                        <rect key="frame" x="367" y="70" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="9Aw-a4-Jqw" userLabel="Depth Smoothing Switch">
+                                        <rect key="frame" x="8" y="20" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="changeDepthSmoothing:" destination="BYZ-38-t0r" eventType="valueChanged" id="zs9-ms-1sD"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="9Aw-a4-Jqw" firstAttribute="top" secondItem="ajY-TT-566" secondAttribute="top" constant="20" id="1EP-dC-8PS"/>
+                                    <constraint firstItem="AWT-2N-ltu" firstAttribute="trailing" secondItem="ajY-TT-566" secondAttribute="trailing" constant="-8" id="PIo-Kp-11Q"/>
+                                    <constraint firstItem="9Aw-a4-Jqw" firstAttribute="centerY" secondItem="qCU-4v-Pkw" secondAttribute="centerY" id="mBf-kL-3CW"/>
+                                    <constraint firstItem="AWT-2N-ltu" firstAttribute="top" secondItem="ajY-TT-566" secondAttribute="top" constant="70" id="nfr-hv-hFH"/>
+                                    <constraint firstItem="qCU-4v-Pkw" firstAttribute="leading" secondItem="9Aw-a4-Jqw" secondAttribute="trailing" constant="8" id="r8c-rS-1yv"/>
+                                    <constraint firstItem="9Aw-a4-Jqw" firstAttribute="leading" secondItem="ajY-TT-566" secondAttribute="leading" constant="8" id="zEO-Fl-7xr"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qzi-3c-VQI" userLabel="3D View" customClass="PointCloudMetalView">
+                                <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Panning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fm2-sp-46o">
+                                        <rect key="frame" x="65" y="686.66666666666663" width="115.33333333333331" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="1" green="0.98406440019999997" blue="0.001863333862" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yy3-zH-gY9" userLabel="Auto Panning Switch">
+                                        <rect key="frame" x="8" y="683" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="didAutoPanningChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="QRG-Ns-bvr"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="Fm2-sp-46o" firstAttribute="leading" secondItem="yy3-zH-gY9" secondAttribute="trailing" constant="8" id="PYj-K3-ddg"/>
+                                    <constraint firstItem="Fm2-sp-46o" firstAttribute="centerY" secondItem="yy3-zH-gY9" secondAttribute="centerY" id="qGG-m3-X9G"/>
+                                </constraints>
+                            </view>
+                            <label hidden="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TrueDepth Camera Unavailable" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B08-Wv-b5R" userLabel="Camera Unavailable">
+                                <rect key="frame" x="26.666666666666657" y="391.66666666666669" width="321.66666666666674" height="28.666666666666686"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6D4-Y8-I1S" userLabel="Resume">
+                                <rect key="frame" x="105" y="386.66666666666669" width="165" height="39"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                <state key="normal" title="Tap to resume">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="resumeInterruptedSession:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9ZM-QH-ZlN"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="wHT-4T-oJU" userLabel="Cloud To JET Seg Ctrl">
+                                <rect key="frame" x="266" y="64" width="101" height="29"/>
+                                <segments>
+                                    <segment title="2D" width="50"/>
+                                    <segment title="3D" width="50"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeCloudToJET:" destination="BYZ-38-t0r" eventType="valueChanged" id="aqU-fQ-mMc"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6D4-Y8-I1S" firstAttribute="centerY" secondItem="Eqv-7y-uCz" secondAttribute="centerY" id="0cF-Ck-xhe"/>
+                            <constraint firstItem="Qzi-3c-VQI" firstAttribute="top" secondItem="ajY-TT-566" secondAttribute="top" id="1bd-fb-i2O"/>
+                            <constraint firstItem="3Gl-sb-vLR" firstAttribute="top" secondItem="wHT-4T-oJU" secondAttribute="top" constant="-20" id="1eh-XL-2fP"/>
+                            <constraint firstItem="Qzi-3c-VQI" firstAttribute="leading" secondItem="ajY-TT-566" secondAttribute="leading" id="7Oi-qm-dT0"/>
+                            <constraint firstItem="B08-Wv-b5R" firstAttribute="centerX" secondItem="3Gl-sb-vLR" secondAttribute="centerX" id="9qb-K5-MI3"/>
+                            <constraint firstItem="3Gl-sb-vLR" firstAttribute="leading" secondItem="yy3-zH-gY9" secondAttribute="leading" constant="-8" id="ClC-Uz-UTl"/>
+                            <constraint firstItem="ajY-TT-566" firstAttribute="top" secondItem="3Gl-sb-vLR" secondAttribute="top" id="KZ2-bD-AOA"/>
+                            <constraint firstItem="3Gl-sb-vLR" firstAttribute="bottom" secondItem="ajY-TT-566" secondAttribute="bottom" id="QoV-sr-CZ5"/>
+                            <constraint firstItem="Qzi-3c-VQI" firstAttribute="width" secondItem="ajY-TT-566" secondAttribute="width" id="Rcf-Ib-Rj2"/>
+                            <constraint firstItem="ajY-TT-566" firstAttribute="leading" secondItem="3Gl-sb-vLR" secondAttribute="leading" id="aRI-5P-ai1"/>
+                            <constraint firstItem="wHT-4T-oJU" firstAttribute="trailing" secondItem="3Gl-sb-vLR" secondAttribute="trailing" constant="-8" id="br2-25-oAS"/>
+                            <constraint firstItem="yy3-zH-gY9" firstAttribute="bottom" secondItem="3Gl-sb-vLR" secondAttribute="bottom" constant="-20" id="c8p-7Q-HMC"/>
+                            <constraint firstItem="6D4-Y8-I1S" firstAttribute="centerX" secondItem="3Gl-sb-vLR" secondAttribute="centerX" id="jcz-lJ-VxY"/>
+                            <constraint firstItem="3Gl-sb-vLR" firstAttribute="trailing" secondItem="ajY-TT-566" secondAttribute="trailing" id="sWY-Pk-REW"/>
+                            <constraint firstItem="Qzi-3c-VQI" firstAttribute="height" secondItem="ajY-TT-566" secondAttribute="height" id="ufK-nY-e5D"/>
+                            <constraint firstItem="B08-Wv-b5R" firstAttribute="centerY" secondItem="Eqv-7y-uCz" secondAttribute="centerY" id="usf-3D-Qpy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3Gl-sb-vLR"/>
+                    </view>
+                    <connections>
+                        <outlet property="autoPanningSwitch" destination="yy3-zH-gY9" id="KN3-UL-caQ"/>
+                        <outlet property="cameraUnavailableLabel" destination="B08-Wv-b5R" id="zOh-RF-43A"/>
+                        <outlet property="cloudToJETSegCtrl" destination="wHT-4T-oJU" id="nvd-4h-26L"/>
+                        <outlet property="cloudView" destination="Qzi-3c-VQI" id="4GD-1c-K9J"/>
+                        <outlet property="depthSmoothingSwitch" destination="9Aw-a4-Jqw" id="plJ-q5-xAr"/>
+                        <outlet property="jetView" destination="ajY-TT-566" id="a0f-H1-2Fr"/>
+                        <outlet property="mixFactorSlider" destination="x5F-tE-pbz" id="y4U-DD-NqG"/>
+                        <outlet property="resumeButton" destination="6D4-Y8-I1S" id="xYq-f7-4cQ"/>
+                        <outlet property="smoothDepthLabel" destination="qCU-4v-Pkw" id="EXl-p1-L6t"/>
+                        <outlet property="touchDepth" destination="AWT-2N-ltu" id="Maj-Kq-cAE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="26.399999999999999" y="84.975369458128085"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+</document>
