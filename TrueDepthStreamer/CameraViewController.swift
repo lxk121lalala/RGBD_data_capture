@@ -780,10 +780,11 @@ class CameraViewController: UIViewController, AVCaptureDataOutputSynchronizerDel
                let photoView : PhotoView! = PhotoView()
                if let UIImagedepthPixelBuffer : UIImage = photoView.depthBuffer(toImage: depthPixelBuffer){
                    // depth image save
-//                   UIImageWriteToSavedPhotosAlbum(UIImagedepthPixelBuffer, nil, nil, nil)
-//                   // color image save
-//                   UIImageWriteToSavedPhotosAlbum(UIImageVideoPixelBuffer, nil, nil, nil)
-//                   usleep(80000)
+                   UIImageWriteToSavedPhotosAlbum(UIImagedepthPixelBuffer, nil, nil, nil)
+                   usleep(5000)  //5ms
+                   // color image save
+                   UIImageWriteToSavedPhotosAlbum(UIImageVideoPixelBuffer, nil, nil, nil)
+                   usleep(5000)  //5ms
                }
            }
         
