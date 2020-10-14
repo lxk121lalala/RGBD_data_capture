@@ -120,7 +120,20 @@ class CameraViewController: UIViewController, AVCaptureDataOutputSynchronizerDel
         panOneFingerGesture.minimumNumberOfTouches = 1
         cloudView.addGestureRecognizer(panOneFingerGesture)
         
-        cloudToJETSegCtrl.selectedSegmentIndex = 1
+        cloudToJETSegCtrl.selectedSegmentIndex = 0
+        
+        JETEnabled = (cloudToJETSegCtrl.selectedSegmentIndex == 0)
+        
+        sessionQueue.sync {
+            if JETEnabled {
+                self.depthDataOutput.isFilteringEnabled = self.depthSmoothingSwitch.isOn
+            } else {
+                self.depthDataOutput.isFilteringEnabled = false
+            }
+            
+            self.cloudView.isHidden = JETEnabled
+            self.jetView.isHidden = !JETEnabled
+        }
         
         // Check video authorization status, video access is required
         switch AVCaptureDevice.authorizationStatus(for: .video) {
@@ -767,10 +780,10 @@ class CameraViewController: UIViewController, AVCaptureDataOutputSynchronizerDel
                let photoView : PhotoView! = PhotoView()
                if let UIImagedepthPixelBuffer : UIImage = photoView.depthBuffer(toImage: depthPixelBuffer){
                    // depth image save
-                   UIImageWriteToSavedPhotosAlbum(UIImagedepthPixelBuffer, nil, nil, nil)
-                   // color image save
-                   UIImageWriteToSavedPhotosAlbum(UIImageVideoPixelBuffer, nil, nil, nil)
-                   usleep(80000)
+//                   UIImageWriteToSavedPhotosAlbum(UIImagedepthPixelBuffer, nil, nil, nil)
+//                   // color image save
+//                   UIImageWriteToSavedPhotosAlbum(UIImageVideoPixelBuffer, nil, nil, nil)
+//                   usleep(80000)
                }
            }
         

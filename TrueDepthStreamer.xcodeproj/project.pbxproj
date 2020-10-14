@@ -14,6 +14,7 @@
 		2633CF1D1E7C65D500FC80E1 /* DepthToJETConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2633CF1C1E7C65D500FC80E1 /* DepthToJETConverter.swift */; };
 		2672370E1E79BFC0003D2EAA /* DepthToJET.metal in Sources */ = {isa = PBXBuildFile; fileRef = 2672370D1E79BFBF003D2EAA /* DepthToJET.metal */; };
 		6D20BC101FFE665100496684 /* PointCloudMetalView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6D20BC0F1FFE665100496684 /* PointCloudMetalView.mm */; };
+		C1C4CF5C2536AD10000F015C /* kuang.png in Resources */ = {isa = PBXBuildFile; fileRef = C1C4CF5B2536AD10000F015C /* kuang.png */; };
 		C3444A7D1FFE6110002D901D /* AAPLTransforms.mm in Sources */ = {isa = PBXBuildFile; fileRef = C3444A741FFE6110002D901D /* AAPLTransforms.mm */; };
 		C3444A7E1FFE6110002D901D /* PointCloud.metal in Sources */ = {isa = PBXBuildFile; fileRef = C3444A751FFE6110002D901D /* PointCloud.metal */; };
 		C3B256731FDE655200617DD7 /* HistogramCalculator.m in Sources */ = {isa = PBXBuildFile; fileRef = C3B256711FDE655100617DD7 /* HistogramCalculator.m */; };
@@ -37,6 +38,7 @@
 		2672370D1E79BFBF003D2EAA /* DepthToJET.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = DepthToJET.metal; sourceTree = "<group>"; };
 		267ED84D1ED7965A00898078 /* TrueDepthStreamer-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TrueDepthStreamer-Bridging-Header.h"; sourceTree = "<group>"; };
 		6D20BC0F1FFE665100496684 /* PointCloudMetalView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PointCloudMetalView.mm; sourceTree = "<group>"; };
+		C1C4CF5B2536AD10000F015C /* kuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kuang.png; sourceTree = "<group>"; };
 		C3444A731FFE6110002D901D /* PointCloudMetalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PointCloudMetalView.h; sourceTree = "<group>"; };
 		C3444A741FFE6110002D901D /* AAPLTransforms.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AAPLTransforms.mm; sourceTree = "<group>"; };
 		C3444A751FFE6110002D901D /* PointCloud.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = PointCloud.metal; sourceTree = "<group>"; };
@@ -85,6 +87,14 @@
 			children = (
 			);
 			name = Configuration;
+			sourceTree = "<group>";
+		};
+		C1C4CF5A2536ACDD000F015C /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C1C4CF5B2536AD10000F015C /* kuang.png */,
+			);
+			name = Assets;
 			sourceTree = "<group>";
 		};
 		C3B2FE6F1FFA8B9A00D8BC60 /* PointCloud */ = {
@@ -140,6 +150,7 @@
 		E422DFB91CEF894F0047D7A4 /* TrueDepthStreamer */ = {
 			isa = PBXGroup;
 			children = (
+				C1C4CF5A2536ACDD000F015C /* Assets */,
 				C3B2FE6F1FFA8B9A00D8BC60 /* PointCloud */,
 				C3B256721FDE655200617DD7 /* HistogramCalculator.h */,
 				C3B256711FDE655100617DD7 /* HistogramCalculator.m */,
@@ -191,7 +202,7 @@
 				TargetAttributes = {
 					E422DFB61CEF894F0047D7A4 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 9X627UPF65;
+						DevelopmentTeam = R24TLJ3YBG;
 						LastSwiftMigration = 1100;
 						ProvisioningStyle = Automatic;
 					};
@@ -222,6 +233,7 @@
 			files = (
 				E422DFC51CEF894F0047D7A4 /* LaunchScreen.storyboard in Resources */,
 				E422DFC21CEF894F0047D7A4 /* Assets.xcassets in Resources */,
+				C1C4CF5C2536AD10000F015C /* kuang.png in Resources */,
 				E422DFC01CEF894F0047D7A4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -399,7 +411,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9X627UPF65;
+				DEVELOPMENT_TEAM = R24TLJ3YBG;
 				INFOPLIST_FILE = TrueDepthStreamer/Info.plist;
 				INSTALL_PATH = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -425,7 +437,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9X627UPF65;
+				DEVELOPMENT_TEAM = R24TLJ3YBG;
 				INFOPLIST_FILE = TrueDepthStreamer/Info.plist;
 				INSTALL_PATH = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14253.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina5_9" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14241.3"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,9 +25,8 @@
                                         <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="x5F-tE-pbz">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="x5F-tE-pbz">
                                         <rect key="frame" x="-2" y="700" width="379" height="31"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <connections>
                                             <action selector="changeMixFactor:" destination="BYZ-38-t0r" eventType="valueChanged" id="QU7-1h-yAf"/>
                                         </connections>
@@ -45,15 +43,23 @@
                                             <action selector="changeDepthSmoothing:" destination="BYZ-38-t0r" eventType="valueChanged" id="zs9-ms-1sD"/>
                                         </connections>
                                     </switch>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="kuang.png" id="s7P-Gx-5KA">
+                                        <rect key="frame" x="38" y="144" width="304" height="439"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <viewLayoutGuide key="safeArea" id="TDO-gA-8kd"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="9Aw-a4-Jqw" firstAttribute="top" secondItem="ajY-TT-566" secondAttribute="top" constant="20" id="1EP-dC-8PS"/>
                                     <constraint firstItem="AWT-2N-ltu" firstAttribute="trailing" secondItem="ajY-TT-566" secondAttribute="trailing" constant="-8" id="PIo-Kp-11Q"/>
+                                    <constraint firstItem="x5F-tE-pbz" firstAttribute="leading" secondItem="ajY-TT-566" secondAttribute="leading" id="Sxi-rq-VAX"/>
+                                    <constraint firstAttribute="bottom" secondItem="x5F-tE-pbz" secondAttribute="bottom" constant="4" id="YJp-uQ-e5S"/>
                                     <constraint firstItem="9Aw-a4-Jqw" firstAttribute="centerY" secondItem="qCU-4v-Pkw" secondAttribute="centerY" id="mBf-kL-3CW"/>
                                     <constraint firstItem="AWT-2N-ltu" firstAttribute="top" secondItem="ajY-TT-566" secondAttribute="top" constant="70" id="nfr-hv-hFH"/>
                                     <constraint firstItem="qCU-4v-Pkw" firstAttribute="leading" secondItem="9Aw-a4-Jqw" secondAttribute="trailing" constant="8" id="r8c-rS-1yv"/>
                                     <constraint firstItem="9Aw-a4-Jqw" firstAttribute="leading" secondItem="ajY-TT-566" secondAttribute="leading" constant="8" id="zEO-Fl-7xr"/>
+                                    <constraint firstItem="x5F-tE-pbz" firstAttribute="centerX" secondItem="ajY-TT-566" secondAttribute="centerX" id="zaf-6a-w2D"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qzi-3c-VQI" userLabel="3D View" customClass="PointCloudMetalView">
@@ -104,7 +110,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="wHT-4T-oJU" userLabel="Cloud To JET Seg Ctrl">
-                                <rect key="frame" x="266" y="64" width="101" height="29"/>
+                                <rect key="frame" x="266" y="64" width="101" height="32"/>
                                 <segments>
                                     <segment title="2D" width="50"/>
                                     <segment title="3D" width="50"/>
@@ -153,5 +159,8 @@
             <point key="canvasLocation" x="26.399999999999999" y="84.975369458128085"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="kuang.png" width="374" height="397"/>
+    </resources>
     <color key="tintColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
