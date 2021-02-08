@@ -167,6 +167,7 @@ typedef unsigned char byte;
         for (int i =0; i<width; i++) {
             int index = j * width + i;
             //ARGB
+//        lxk: change one channel depth to channel 4
             int depth =((__fp16 *)baseAddress)[index] * 10000;
             array[ index*kPixelChannelCount + 1] = (byte)(depth/255);
             array[ index*kPixelChannelCount + 2] = (byte)(depth%255);

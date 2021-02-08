@@ -397,7 +397,10 @@ class CameraViewController: UIViewController, AVCaptureDataOutputSynchronizerDel
         
         session.beginConfiguration()
         
+//        lxk: change video type
+//        session.sessionPreset = AVCaptureSession.Preset.hd1920x1080
         session.sessionPreset = AVCaptureSession.Preset.vga640x480
+        
         
         // Add a video input
         guard session.canAddInput(videoDeviceInput) else {
@@ -774,6 +777,32 @@ class CameraViewController: UIViewController, AVCaptureDataOutputSynchronizerDel
             let formatDescription = CMSampleBufferGetFormatDescription(sampleBuffer) else {
                 return
         }
+        
+        
+ 
+//       lxk: ----------------------  start read calibration info ------------------------------------///
+        let calibration = depthData.cameraCalibrationData;
+        let intrinsic = calibration!.intrinsicMatrix;
+        
+        let refWidth = calibration!.intrinsicMatrixReferenceDimensions.width;
+        let refHeight = calibration!.intrinsicMatrixReferenceDimensions.height;
+        
+        let videoWidth = CVPixelBufferGetWidth(videoPixelBuffer);
+        let videoHeight = CVPixelBufferGetHeight(videoPixelBuffer);
+        let wScale = CGFloat(videoWidth) / refWidth;
+        let hScale = CGFloat(videoHeight)  / refHeight;
+        
+        let fx_ori = (intrinsic.columns.0)[0];
+        let fy_ori = (intrinsic.columns.1)[1];
+        let cx_ori = (intrinsic.columns.2)[0];
+        let cy_ori = (intrinsic.columns.2)[1];
+        
+        let fx = CGFloat(fx_ori) * wScale;
+        let fy =  CGFloat(fy_ori) * hScale ;
+        let cx =   CGFloat(cx_ori) * wScale;
+        let cy =  CGFloat(cy_ori) * hScale;
+
+//       lxk: ----------------------  end read calibration info ------------------------------------///
         
         
         if let UIImageVideoPixelBuffer = UIImage(pixelBuffer: videoPixelBuffer){
